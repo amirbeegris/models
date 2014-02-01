@@ -5,3 +5,4 @@ feature_branch commit 3
 feature_branch commit 4
 feature_branch commit 5
 feature_branch commit 6
+feature_branch commit 7
