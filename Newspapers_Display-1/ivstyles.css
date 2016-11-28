@@ -1,0 +1,41 @@
+body {
+    overflow:hidden;
+    margin: 0px;
+}
+
+.dprogress {
+ width:100px;
+ height:100px;
+ position: absolute;
+ top:100px;
+ left:100px;
+ display:none;
+}
+.cprogress circle {
+  stroke-dashoffset: 0;
+  stroke: #666;
+  stroke-width: 1em;
+}
+.cprogress #bar {
+  stroke: #000;
+  stroke-width: 4px;
+}
+
+.tprogress
+{
+  position:absolute;
+  text-align:center; 
+  vertical-align:middle; 
+  width:100px;
+  height:100px;
+  top:0px;
+}
+
+.tprogress .textProgress
+{
+  display:inline-block;  
+  font-family:"Segoe UI",Tahoma, Arial, Helvetica;
+  font-size:26px;
+  color:#000;
+ line-height:100px; 
+}
