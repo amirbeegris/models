@@ -1,6 +1,94 @@
-<canvas id="ivwindow3d" style="border: none;" width="700" height="500">
-</canvas>
-<script type="text/javascript" src="iv3d.js"></script>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>3D Model</title>
 <script type="text/javascript">
-    var view3d=new iv.window({canvas:document.getElementById("ivwindow3d"),file:"BEEGRIS Displays.iv3d",color:0x777777});
+var view3d;
+function ivCommonInit3d()
+{
+  view3d=new iv.window({canvas:document.getElementById("ivwindow3d"),file:"BEEGRIS Displays.iv3d",color:0x353743});
+}
 </script>
+<script type="text/javascript" src="iv3d.js"></script>
+<link rel="stylesheet" type="text/css" href="ivstyles.css" />
+</head>
+
+
+<body onload="ivCommonInit3d()">
+
+
+  <div class="contentBorder">  
+  <div class="content">
+  <h1>WebGL 3D Model</h1>
+  </div></div>
+<div class="contentDivider" ></div>  
+  <div class="contentBorderDarkGray">  
+  <div class="content">
+
+
+    <canvas id="ivwindow3d"  width="660" height="500" style="float: right" ></canvas>
+    <div >
+    <h2>3D Model</h2>
+    	<p>It's easy to create WebGL page in order to share 3D model.</p>
+		<ul>
+			<li>Just load your model into final mesh, select Save | WebGL.</li>
+			<li>Pick your template and adjust initial view.</li>
+			<li>Click <strong>Save</strong>.</li>
+			<li>Upload generated files to your site</li>
+			<li>View model in your browser.</li>
+		</ul>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+    	<p><a class="flatButton"href="#" onclick="view3d.setDefView();">
+		<strong>Home View</strong></a>  
+		
+		<a class="flatButton"href="#" onclick="view3d.setTextures(!view3d.getTextures());">
+		<strong>Textures On/Off</strong></a>
+		</p>
+    </div></div></div>
+  <div class="contentBorder">  
+  <div class="content">
+      <p>Created with <a href="http://www.finalmesh.com/">FinalMesh</a> |   Left button - Rotate | Right button - Zoom</p>
+			<div class="cellline">
+			<div class="cell_1">
+				<h2>WebGL</h2>
+				<p>It's easy to create <strong>WebGL</strong> page in order to share 3D model. 
+Just load your model into final mesh, select Save | WebGL. Pick your template 
+				and click save. Upload generated files to your site and view 
+				model in your browser.</p>
+			</div><div class="cell_v_div"></div><div class="cell_1">
+				<h2>Textures</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+				laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div><div class="cell_v_div">
+			</div><div class="cell_1">
+				<h2>Geometry</h2>
+				<p>&nbsp;Duis aute irure dolor in reprehenderit in voluptate 
+				velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+				sint occaecat cupidatat non proident, sunt in culpa qui officia 
+				deserunt mollit anim id est laborum.</p>
+			</div><div class="cell_v_div">
+			</div><div class="cell_1">			
+			<h2>Automation</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+				laboris nisi ut aliquip ex ea commodo consequat. </p>
+				<div class="moreFrame"><a class="more" href="#">Learn more</a></div>
+			</div>
+			</div>			
+  </div></div>
+
+<p> &nbsp;</p>
+<div class="footer"> 
+<a href="http://www.finalmesh.com">FinalMesh</a><span class="vline">|</span><a href="#">Feature 1</a><span class="vline">|</span><a href="#">Feature 2</a><span class="vline">|</span><a href="http://www.finalmesh.com/services.htm">Services</a><span class="vline">|</span><a href="#">Site Map</a><span class="vline">|</span><a href="http://www.finalmesh.com/contact.php">Contact Us</a>
+</div>
+  <div class="footer"> 
+    Copyright © 2014 
+		<a href="http://www.pelikansoftware.com">Pelikan Software Kft</a>. All Rights Reserved. 
+		<a href="#">Privacy Policy</a>.</div>
+</body>
+</html>
