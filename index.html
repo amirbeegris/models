@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>3D Model - BEEGRIS</title>
+<script type="text/javascript" src="ivsys.js"></script><script type="text/javascript" src="ivmatrix3d.js"></script><script type="text/javascript" src="ivwindow3d.js"></script><script type="text/javascript" src="ivspace3d.js"></script><script type="text/javascript" src="ivmtl3d.js"></script><script type="text/javascript" src="ivmesh3d.js"></script><script type="text/javascript" src="ivnode3d.js"></script><script type="text/javascript" src="ivhittest.js"></script><script type="text/javascript" src="ivtreeview.js"></script><script type="text/javascript" src="ivedit3d.js"></script><script type="text/javascript" src="ivhandler.js"></script>
+<link rel="stylesheet" type="text/css" href="3deditor.css" /><link rel="stylesheet" type="text/css" href="ivtreeview.css" /><link rel="stylesheet" type="text/css" href="treeview.css" />
+<script>
+function ivResizeCanvas(cnv)
+{
+  var r=cnv.getBoundingClientRect();
+  var width = document.body.clientWidth;//window.innerWidth;
+  var tree=tree=document.getElementById("treeview");
+  if(tree && tree.style.display!="none")
+   {
+	var rt=tree.getBoundingClientRect();
+	width-=rt.width;
+   }
+  
+  if(view3d){
+  view3d.setViewSize(width,r.height);
+  view3d.invalidate();
+  }else {cnv.width=width;cnv.height = r.height;}
+}
+</script>
+</head>
+
+<body onload='iv.initEditor3d("BEEGRIS Displays.iv3d");'>
+<div class="fileHeader">
+<div class="toolbar-right">
+	<div class="ivmenu">
+<ul>
+   <li class='has-sub last'>
+   <a href='#'><span>Options</span></a>
+      <ul>
+         <li><a href='#' onclick="iv.toggleTree();" id="view3d-cfg-tree"><img  src="checkmark.png"/><span>Scene Tree</span></a></li>
+	 <li class="separator"></li>
+         <li><a href='#' onclick="iv.toggleTextures();" id="view3d-cfg-textures"><img  src="checkmark.png"/><span>Textures On/Off</span></a></li>
+         <li><a href='#' onclick="iv.toggleMaterials();" id="view3d-cfg-materials"><img  src="checkmark.png"/><span>Materials On/Off</span></a></li>
+         <li><a href="#" onclick="iv.toggleDoubleSided();" id="view3d-cfg-dblside"><img  src="checkmark.png"/><span>Show Backfacing Polygons</span></a></li>
+	 <li class="separator"></li>
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-world"><img  src="checkmark.png"/><span>Light From File</span></a></li>
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-white"><img  src="checkmark.png"/><span>White Lights</span></a></li>
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-day"><img  src="checkmark.png"/><span>Day Lights</span></a></li>
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-blue"><img  src="checkmark.png"/><span>Blue Lights</span></a></li>         
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-hard"><img  src="checkmark.png"/><span>Hard</span></a></li>
+         <li><a href="#" onclick="iv.setLights(this);" id="view3d-lights-off"><img  src="checkmark.png"/><span>No Lights</span></a></li>
+      </ul>
+   </li>
+</ul>
+</div>
+
+  </div>
+  <img src="logo.png"/>
+</div>
+
+			<div class="buttons" id="mainMenu">
+			<img  src="3dicon_undo.png" id="view3d-undo" onclick='ivDoUndo();' title="Undo Last Action" />
+			<img  id="view3d-redo" onclick='ivDoRedo();' title="Redo" src="3dicon_redo.png" />
+			
+			<span id="view3d-obj-select" onclick='ivSetEditMode("select");' title="Selection Mode Use Ctrl+Click in order to select more objects">Select</span>
+			<span id="view3d-obj-move" onclick='ivSetEditMode("move");' title="Select and Move selected object">Move</span>
+			<span id="view3d-obj-rotate" onclick='ivSetEditMode("rotate");' title="Select and Rotate selected object">Rotate</span>
+			<span id="view3d-obj-scale" onclick='ivSetEditMode("scale");' title="Select and Scale selected object">Scale</span>
+			<span id="view3d-axis-x" onclick='iv.setAxis("x");' title="X Axis">X</span>
+			<span id="view3d-axis-y" onclick='iv.setAxis("y");' title="Y Axis">Y</span> 
+			<span id="view3d-axis-z" onclick='iv.setAxis("z");' title="Z Axis">Z</span> 
+		<div  class="smallbuttons">
+			<span href="#" onclick="view3d.setDefView(iv.VIEW_TRANSITION);" title="Restore Home View">Home</span>
+			<span href="#" id="view3d-rotate" onclick='ivSetVPMode("rotate");' title="Orbit Navigation Mode">Orbit</span>
+			<span href="#" id="view3d-zoom" onclick='ivSetVPMode("zoom");' title="Zoom Navigation Mode">Zoom</span>
+			<span href="#" id="view3d-pan" onclick='ivSetVPMode("pan");' title="Pan Navigation Mode">Pan</span>
+		</div>	
+			</div>			
+<div class="tree-view" id="treeview"></div>
+<div>
+<span id="ivanimate" class="flatButton"  style="right:10px;margin-top:10px;position:absolute;visibility:hidden;" onclick='ivPlayAnimation();'><strong>Play</strong></span>
+<canvas id="ivwindow3d" class="ivcanvas3d" ></canvas>
+</div>
+  <div class="contentBorder">  
+  <div class="content">
+<p><b>FinalMesh.WEB</b> is a perfect foundation for viewing and sharing 3D content on the web. No plugins are required - it instantly works in any modern browser.</p>
+			<div class="cellline">
+			<div class="cell_2">
+				<h2>WebGL 3D Viewer</h2>
+<p>Fast and small 3D Viewer, with great visualization speed. It feels like desktop application. </p>
+<ul><li>Classic viewport navigation: Orbit, Zoom, Pan</li>
+<li>Zoom via camera dolly or via Field of view</li>
+<li>Materials, Textures, Transparency</li>
+<li>Per pixel lighting</li>
+<li>Solid or textured background</li>
+<li>Many special optimizations for heavy models.</li>
+</ul>
+&nbsp;
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a class="flatButton" href="webglexamples.htm" ><strong>More Demos</strong></a>
+</p>
+			</div><div class="cell_v_div"></div><div class="cell_2">
+				<h2>3D Editor</h2>
+				<p>It behaves like regular desktop 3D editor. Just select Move (or Rotate, Scale) mode, pick any object and move it.</p>
+<ul>
+<li>Fast Object picking</li>
+<li>Highlighting of selected object</li>
+<li>Rotate, Scale, Move modes</li>
+<li>Move along axis: X,Y,Z or plane: XY, YZ, XZ</li>
+<li>Rotate around: X,Y,Z</li>
+<li>Scale in any direction: X,Y,Z</li>
+<li>Undo/Redo</li>
+</ul>
+
+	</div></div>			
+	</div></div><div class="contentBorderGray"><div class="content">
+<h2>Highlights</h2>
+
+			<div class="cellline">
+			<div class="cell_1">
+				<h2>HTML and Javascript</h2>
+<p>Viewer was made on Javascript and WebGL without 3rd plugins or heavy libraries. Works in any modern browser. Geometry data is stored and rendered on video card which gives great speed and response.<br/>Page or only frame can be used as is or integrated into web site.</p>
+			</div><div class="cell_v_div"></div><div class="cell_1">
+				<h2>Geometry</h2>
+				<p>Data files are small and compact. This is really great.<br/>In most cases size is smaller than zipped 3D model in original file format. As result model will apper on the screen much faster then it will be downloaded as a file.<br/>
+<b>AJAX</b> Geometry is loaded in background and appears on the screen.</p>
+			</div><div class="cell_v_div">
+			</div><div class="cell_1">
+				<h2>Tools</h2>
+				<p>There are many components available.</p>
+<ul>
+<li>Cross section</li>
+<li>Hotspots</li>
+<li>Scene Information dialog</li>
+<li>Bounding boxes or construction grid</li>
+<li>Wireframe render mode</li>
+<li>Markups and Mesurements</li>
+</ul>
+
+			</div><div class="cell_v_div">
+			</div><div class="cell_1">
+				<h2>Extensibility</h2>
+				<p>Default appearance and functionality can be modified in order to fit very specific requirements.
+For instance vieport rotation may be lmited to top hemisphere only, or replaced to walkthrough or fly navigation. Objects may be added from content library on the fly, and more.</p>
+			</div>			
+			</div>	
+  </div></div>
+<div class="contentBorder"><div class="content">	
+<h2>Usage Scenarios</h2>
+<p>There are few ways of using <b>FinalMesh.WEB</b>.</p>
+<ul><li>Firstly, you convert 3D content into WebGL enabled HTML pages and upload to your server. Convertion is perfomed in one click. Just <a href="http://www.finalmesh.com/download.htm">download FinalMesh</a> application and start creting your 3D pages.</li>
+<li>Next, you may want to integrate it into your existing site or modify controls around 3D Window. This is as easy as regular HTML, no extra knoweldge is required.</li>
+<li>Of course, you may need custom logic, special animations, additional features, like inserting objects from library or collaboration tools.</li>
+</ul>
+<p>Finally, there is no subscription, you are free to keep data on your web or local server.</p>
+<p><a class="flatButton" href="http://www.finalmesh.com/contact.php"> Learn more</a></p>
+<p></p>
+  </div></div>
+  <div class="footer"> 
+    Copyright © 2016
+		<a href="http://www.pelikansoftware.com">Pelikan Software Kft</a>. All Rights Reserved. 
+		<a href="http://www.finalmesh.com/privacy_policy.htm">Privacy Policy</a>.</div>
+
+</body>
+
+</html>
