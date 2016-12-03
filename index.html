@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>3D Model</title>
+<script type="text/javascript">
+var view3d;
+function ivCommonInit3d()
+{
+  view3d=new iv.window({canvas:document.getElementById("ivwindow3d"),file:"BEEGRIS Displays.iv3d",color:0x020202});
+}
+</script>
+<script type="text/javascript" src="iv3d.js"></script>
+<link rel="stylesheet" type="text/css" href="ivstyles.css" />
+</head>
+
+
+<body onload="ivCommonInit3d()">
+
+  <div class="contentBorder">  
+  <div class="content">
+    <div style="float:left">
+        <h1>3D Model</h1>
+        	</div>
+    <div class="top">
+    <a href="#" onclick="view3d.setDefView();"><img alt="" height="16" src="home.png" width="16" style="vertical-align: bottom;"> Home View</a>
+    <a href="#" onclick="view3d.setTextures(!view3d.getTextures());">Textures</a>
+	</div>
+
+</div></div>
+  <div class="contentBorder">  
+  <div class="content">
+   <div class="contentDivider" ></div>  
+<br/>
+
+    <canvas id="ivwindow3d" style="border: none;" width="1024" height="600"></canvas>
+    <div class="contentDivider" ></div>  
+    <p>Left Button - Rotate, Right button - Zoom.</p>
+
+</div></div>
+<div class="footer"> 
+Created with <a href="http://www.finalmesh.com/">FinalMesh</a><span class="vline">|</span><a href="http://www.finalmesh.com/contact.php">Contact Us</a><span class="vline">|</span>Copyright © 2014 <a href="http://www.pelikansoftware.com">Pelikan Software Kft.</a>
+</div>
+
+
+</body>
+
+</html>
