@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>the best stand</title>
+<script type="text/javascript" src="iv3d.js"></script>
+<link rel="stylesheet" type="text/css" href="ivstyles.css" />
+</head>
+
+<body onload='view3d=iv.initViewer3d("BEEGRIS Displays.iv3d",0x777777,null,1.0);view3d.menuOpen=true;view3d.cfgSelZOffset=true'>
+
+<div>
+    <canvas id="ivwindow3d" style="border: none" width="640" height="480"></canvas>
+
+<div class="panel" id="panel" style="display:hidden">
+
+<div id="content" class="content" >
+<div class="tree-view" id="tree"></div>
+<hr/>
+<h1>Views</h1>
+<ul id="views">
+</ul>
+
+
+</div>
+</div>
+<div class="main" onclick="iv.toggleMenu();" style="display:hidden" id="panel.main">
+<img src="options.png" id="main.button"/>
+<div class="text" id="main.text">the best stand</div>
+</div>
+
+
+</div>
+
+
+
+</body>
+
+</html>
