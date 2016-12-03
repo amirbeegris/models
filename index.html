@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>3D Model</title>
+<style type="text/css">
+body {
+    overflow:hidden;
+    margin: 0px;
+}
+
+</style>
+<script type="text/javascript">
+var view3d;
+function ivCommonInit3d()
+{
+  var canvas=document.getElementById("ivwindow3d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  view3d=new iv.window({canvas:canvas,file:"BEEGRIS Displays.iv3d",color:0x777777});
+}
+
+window.onresize = function(){view3d.setViewSize(window.innerWidth,window.innerHeight);}
+</script>
+<script type="text/javascript" src="iv3d.js"></script>
+</head>
+
+<body onload="ivCommonInit3d()">
+
+    <canvas id="ivwindow3d" style="border: none" width="640" height="480"></canvas>
+</body>
+
+</html>
