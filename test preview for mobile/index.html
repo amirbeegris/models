@@ -1,31 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8" />
 <title>3D Model</title>
-
-<script type="text/javascript">
-var view3d;
-function ivCommonInit3d()
-{
-  view3d=new iv.window({canvas:document.getElementById("ivwindow3d"),file:"BEEGRIS Displays.iv3d",color:0x777777});
-}
-</script>
 <script type="text/javascript" src="iv3d.js"></script>
+<link rel="stylesheet" type="text/css" href="ivstyles.css" />
 </head>
 
+<body onload='view3d=iv.initViewer3d("BEEGRIS Displays.iv3d",0x777777,null,1.0);view3d.menuOpen=true;view3d.cfgSelZOffset=true'>
 
-<body onload="ivCommonInit3d()">
-    <h1>3D Model</h1>
-    <a href="#" onclick="view3d.setDefView();">Set Default View</a>
-    <a href="#" onclick="view3d.setTextures(!view3d.getTextures());">Textures</a>
+<div>
+    <canvas id="ivwindow3d" style="border: none" width="640" height="480"></canvas>
 
-<br/>
+<div class="panel" id="panel" style="display:hidden">
 
-    <canvas id="ivwindow3d" style="border: none;" width="700" height="500"></canvas>
-    <p>65534 - Polygons, 40756 - Points.</p><p>
-    <p>Left Button - Rotate, Right button - Zoom.</p>
-    <p>Created with <a href="http://www.finalmesh.com/">FinalMesh</a></p>
+<div id="content" class="content" >
+<div class="tree-view" id="tree"></div>
+<hr/>
+<h1>Views</h1>
+<ul id="views">
+</ul>
+
+
+</div>
+</div>
+<div class="main" onclick="iv.toggleMenu();" style="display:hidden" id="panel.main">
+<img src="options.png" id="main.button"/>
+<div class="text" id="main.text">3D Model</div>
+</div>
+
+
+</div>
+
+
+
 </body>
 
 </html>
