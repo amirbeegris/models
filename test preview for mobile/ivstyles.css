@@ -144,33 +144,38 @@ margin: 0 3em 0 0;
 
 
 
-.tree-view .group
+.tree-view
 {
-
-}
-.tree-view .group-c
-{
-}
-.tree-view .items{
-	margin-left:12px;
-}
-
-.tree-view .selected{
-}
-
-.tree-view .group-c .items{
-	margin-left:12px;
-	display:none;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+overflow:auto;
+line-height: 100%;
+white-space:nowrap;
 }
 
+.tree-view .group{}
+.tree-view .group-c{}
+.tree-view .items{margin-left:12px;}
 
-.tree-view .icon, .tree-view .open, .tree-view .node, .vis, .hdn{
-	background-image:url('treeicons.png');
-	height: 16px;
-	width: 16px;
+
+.tree-view .group-c .items{margin-left:12px;display:none;}
+
+.tree-view .icon, .tree-view .open, .tree-view .node, .tree-view .vis, .tree-view  .hdn{
+background-image:url('treeicons.png');
+	height:16px;
+	width:16px;
 	display:block;
 	float:left;
+	margin-top:1px;
+	margin-left:4px;
+}
 
+.tree-view .open , .tree-view .vis, .tree-view  .hdn{
+    margin-left:0px;
 }
 
 .tree-view .icon{background-position:-128px,0px;}	
@@ -184,13 +189,25 @@ margin: 0 3em 0 0;
 .tree-view .group-c .open{background-position:0px,0px;}
 .tree-view .group-c .open:hover{background-position:-32px,0px;}
 
-
 .tree-view .item,.tree-view .gitem
 {
-	display: block;
+	display:block;
 	cursor:pointer;
-	height: 18px;
-	white-space: nowrap;
+	height:18px;
+}
+
+.tree-view .normal,.tree-view .selected
+{
+	display:inline-block;
+	cursor:pointer;
+	height:18px;
+}
+.tree-view .normal:hover{
+    background-color:#E5F3FB;
+}
+.tree-view .selected
+{
+    background-color:#007ACC;
 }
 
 .tree-view .item{
@@ -198,21 +215,20 @@ margin: 0 3em 0 0;
 }
 .tree-view .label{
 	height: 18px;
+	padding:0px;
 	padding-left:4px;
-	padding-right:4px;
+	padding-right:8px;
 	display:inline-block;
-	padding-top:0px;
-	font-family: "Segoe UI",Tahoma, Arial, Helvetica, sans-serif;
-	font-size: 12.73px;
-	white-space: nowrap;
+	font-family:"Segoe UI",Tahoma, Arial, Helvetica, sans-serif;
+	font-size:12.73px;
+	line-height:126%;
 }
-
 
 .tree-view .item:hover .label,.tree-view .gitem:hover .label{
  background-color:#E5F3FB;
 }
 
-.tree-view .selected .label,.tree-view .selected:hover .label{
- background-color:#007ACC;
+.tree-view .selected .label, .tree-view .selected,  .tree-view .selected:hover .label{
+ background-color:#007ACC !important;
  color:white;
 }

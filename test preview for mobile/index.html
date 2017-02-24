@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="ivstyles.css" />
 </head>
 
-<body onload='view3d=iv.initViewer3d("BEEGRIS Displays.iv3d",0x777777,null,1.0);view3d.menuOpen=true;view3d.cfgSelZOffset=true'>
+<body onload='view3d=iv.initViewer3d("BEEGRIS Displays.iv3d",0x777777,null,1.0);view3d.menuOpen=true;view3d.cfgSelZOffset=true;view3d.clrSelection[5]=false?0.5:1;'    >
 
 <div>
     <canvas id="ivwindow3d" style="border: none" width="640" height="480"></canvas>
